@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wheel of Weed Deluxe</title>
+  <style>
+    /* Je bestaande styles hier (ongewijzigd) */
+    .page-title {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+      margin: 20px 0;
+    }
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 24px;
+        margin: 15px 0;
+      }
+    }
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: radial-gradient(circle, #000000, #363836);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #result-display {
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .wheel-container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+    }
+    .wheel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 5px solid #000;
+      background: conic-gradient(
+        #4caf50 0% 6.25%, 
+        #fff 6.25% 12.5%, 
+        #4caf50 12.5% 18.75%, 
+        #fff 18.75% 25%, 
+        #4caf50 25% 31.25%, 
+        #fff 31.25% 37.5%, 
+        #4caf50 37.5% 43.75%, 
+        #fff 43.75% 50%, 
+        #4caf50 50% 56.25%, 
+        #fff 56.25% 62.5%, 
+        #4caf50 62.5% 68.75%, 
+        #fff 68.75% 75%, 
+        #4caf50 75% 81.25%, 
+        #fff 81.25% 87.5%, 
+        #4caf50 87.5% 93.75%, 
+        #fff 93.75% 100%
+      );
+      transition: transform 6s cubic-bezier(0.1, 0.7, 0.1, 1);
+    }
+    .wheel::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .pointer {
+      position: absolute;
+      top: 20px;
+      left: 35%;
+      transform: translateX(-190%) rotate(151deg);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 30px solid #000;
+      z-index: 2;
+    }
+    .wheel .segment {
+      position: absolute;
+      width: 50%; /* De helft van het wiel */
+      height: 50%; /* De helft van het wiel */
+      color: #000;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: 100% 100%; /* Pivot point voor rotatie */
+      text-align: right; /* Zorg ervoor dat de tekst richting de rand staat */
+      font-size: 14px;
+    }
+    .wheel .segment_1 {
+      position: absolute;
+      width: 50%; /* De helft van het wiel */
+      height: 50%; /* De helft van het wiel */
+      color: #000;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: 100% 100%; /* Pivot point voor rotatie */
+      text-align: right; /* Zorg ervoor dat de tekst richting de rand staat */
+      font-size: 14px;
+    }
+    .spin-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    .spin-btn:hover {
+      background-color: #388e3c;
+    }
+    .bottom-title{
+        color: gold;
+        font-size: 60px;
+        bottom: auto;
+
+    }
+  </style>
+</head>
+<body>
+    <img src="file_00000000659062468a43974753fc1872 (1).png" alt="logo-m&s" />
+  <h1 class="page-title">Wheel of Weed</h1>
+  <div class="bottom-title">DELUXE</div>
+  <div id="result-display">Spin het wiel om te beginnen!</div>
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <div class="wheel" id="wheel">
+      <div class="segment_1" style="transform: rotate(11.25deg);">3FH</div>
+      <div class="segment" style="transform: rotate(33.75deg);">3BH</div>
+      <div class="segment_1" style="transform: rotate(56.25deg);">4G</div>
+      <div class="segment" style="transform: rotate(78.75deg);">THH</div>
+      <div class="segment_1" style="transform: rotate(101.25deg);">I30</div>
+      <div class="segment" style="transform: rotate(123.75deg);">D6G</div>
+      <div class="segment_1" style="transform: rotate(146.25deg);">GA</div>
+      <div class="segment" style="transform: rotate(168.75deg);">TH</div>
+      <div class="segment_1" style="transform: rotate(191.25deg);">WTR</div>
+      <div class="segment" style="transform: rotate(213.75deg);">DAR</div>
+      <div class="segment_1" style="transform: rotate(236.25deg);">EHV</div>
+      <div class="segment" style="transform: rotate(258.75deg);">PTB</div>
+      <div class="segment_1" style="transform: rotate(281.25deg);">REV</div>
+      <div class="segment" style="transform: rotate(303.75deg);">SKK</div>
+      <div class="segment_1" style="transform: rotate(326.25deg);">B2B</div>
+      <div class="segment" style="transform: rotate(348.75deg);">SPL</div>
+    </div>
+    <button class="spin-btn" id="spin-btn">Spin!</button>
+  </div>
+
+  <script>
+    let currentRotation = 0;
+
+    const options = [
+      "3 French Hits (3FH)",
+      "3 Big Hits (3BH)",
+      "4 Ghosts (4G)",
+      "Take Hit & Hold (THH)",
+      "Inhale 30 Seconds (I30)",
+      "Divide 6 Ghosts (D6G)",
+      "Ghost Attempt (GA)",
+      "Triple Hit (TH)",
+      "Waterfall (WTR)",
+      "Dare (DARE)",
+      "Everybody Hits & Votes (EHV)",
+      "Pass to the Back (PTB)",
+      "Reverse Order (REV)",
+      "Shotgun Kills King (SKK)",
+      "Back to Back (B2B)",
+      "Spin & Pull (SPL)"
+    ];
+
+    const resultDisplay = document.getElementById('result-display');
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spin-btn');
+
+    // Geluiden laden
+    const spinSound = new Audio(''); // draai geluid (lange slide)
+    spinSound.loop = true; // laat het draaien zolang het wiel draait
+
+    const stopSound = new Audio(''); // stop geluid (kort)
+
+    spinBtn.addEventListener('click', () => {
+      if (wheel.style.transition) return; // als al draait, negeren
+
+      // Start draai-geluid
+      spinSound.currentTime = 0;
+      spinSound.play();
+
+      const fullRotations = 8;
+      const randomDegree = Math.floor(Math.random() * 360);
+      const totalDegree = (fullRotations * 360) + randomDegree;
+
+      currentRotation += totalDegree;
+
+      wheel.style.transition = 'transform 6s cubic-bezier(0.1, 0.7, 0.1, 1)';
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+      resultDisplay.textContent = 'Aan het draaien...';
+
+      setTimeout(() => {
+        // Stop draai-geluid
+        spinSound.pause();
+
+        // Speel stop-geluid
+        stopSound.currentTime = 0;
+        stopSound.play();
+
+        const finalAngle = (360 - (currentRotation % 360) + 11.25) % 360;
+        const segmentIndex = Math.floor(finalAngle / 22.5);
+        const result = options[segmentIndex];
+        resultDisplay.textContent = `De uitslag is: ${result}`;
+        wheel.style.transition = '';
+      }, 6000);
+    });
+  </script>
+</body>
+</html>
